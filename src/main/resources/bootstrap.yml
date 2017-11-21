@@ -1,0 +1,51 @@
+spring:
+  application:
+    name: javanewb-common-demo
+  profiles:
+    active: ${profile.active},datasource,mongodb,config,redis
+  cloud:
+    zookeeper:
+      connectString: localhost:2181,localhost:2181
+      enabled: true
+      config:
+        enabled: true
+        root: /configurations/on_portal/${profile.active}
+        defaultContext: apps
+        profileSeparator: ':'
+
+server:
+  port: ${${spring.application.name}.port:8080}
+  context-path: /
+  tomcat:
+    max-threads: 1000
+info.version: ${project.version}
+info.artifactId: ${project.artifactId}
+info.appName: ${spring.application.name}
+info.active: ${profile.active}
+endpoints:
+  enabled: true
+  info:
+    enabled: true
+  health:
+    enabled: true
+hystrix:
+  threadpool:
+    default:
+
+      coreSize: 1000
+      maxQueueSize: 1000
+      queueSizeRejectionThreshold: 1000
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 60000
+management:
+  add-application-context-header: true
+  health:
+    redis:
+      enabled: false
+
+---
+spring:
+  profiles: local
+  cloud:
+    zookeeper:
+      connectString: localhost:2181,localhost:2181
+

@@ -1,0 +1,7 @@
+common:
+  mapper-path: {com.javanewb.**.mapper}
+  swagger:
+    enabled: true
+    path-mapping: /
+    path-regex: /.*
+    base-package: com.javanewb
