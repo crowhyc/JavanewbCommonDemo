@@ -72,6 +72,9 @@
         <repository>
             <id>javanewb-nexus-snapshots</id>
             <url>http://x.javanewb.com/nexus/content/repositories/snapshots/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
         </repository>
 
     </repositories>
